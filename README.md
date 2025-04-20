@@ -44,7 +44,13 @@ cargo run
 cargo test
 ```
 
-🔍 Exemplo de Busca
+📄 Licença
 ```rust
-let result = search("smartphone", &index.inverted_index);
+MIT
+```
+
+🙋‍♂️ Autor
+```rust
+Igor Gomes
+📧 igor.rgomes@outlook.com
 ```
