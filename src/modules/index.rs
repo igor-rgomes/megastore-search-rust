@@ -23,10 +23,10 @@ impl Index {
     pub fn index_products(&mut self, products: &[Product]) {
         for product in products {
             let combined = format!("{} {} {}", product.name, product.brand, product.category);
-            let tokens = combined
-                .to_lowercase()
-                .split_whitespace()
-                .map(|s| s.to_string());
+           let lower = combined.to_lowercase();
+           let tokens = lower
+            .split_whitespace()
+            .map(|s| s.to_string());
 
             for token in tokens {
                 self.inverted_index
