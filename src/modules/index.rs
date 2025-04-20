@@ -10,30 +10,32 @@ pub struct Product {
 }
 
 pub struct Index {
+    pub products: Vec<Product>,
     pub inverted_index: HashMap<String, Vec<usize>>,
 }
 
 impl Index {
-    pub fn new() -> Self {
-        Self {
-            inverted_index: HashMap::new(),
-        }
-    }
+    pub fn new(products: Vec<Product>) -> Self {
+        let mut inverted_index: HashMap<String, Vec<usize>> = HashMap::new();
 
-    pub fn index_products(&mut self, products: &[Product]) {
-        for product in products {
+        for product in &products {
             let combined = format!("{} {} {}", product.name, product.brand, product.category);
-           let lower = combined.to_lowercase();
-           let tokens = lower
-            .split_whitespace()
-            .map(|s| s.to_string());
+            let lower = combined.to_lowercase();
+            let tokens = lower
+                .split_whitespace()
+                .map(|s| s.to_string());
 
             for token in tokens {
-                self.inverted_index
+                inverted_index
                     .entry(token)
-                    .or_default()
+                    .or_insert_with(Vec::new)
                     .push(product.id);
             }
+        }
+
+        Index {
+            products,
+            inverted_index,
         }
     }
 }
