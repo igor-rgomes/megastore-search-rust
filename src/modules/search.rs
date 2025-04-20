@@ -2,7 +2,8 @@ use std::collections::HashMap;
 
 pub fn search(query: &str, index: &HashMap<String, Vec<usize>>) -> Vec<usize> {
     let mut result_counter: HashMap<usize, usize> = HashMap::new();
-    let tokens = query.to_lowercase().split_whitespace();
+    let lower = query.to_lowercase();
+    let tokens = lower.split_whitespace();
 
     for token in tokens {
         if let Some(ids) = index.get(token) {
