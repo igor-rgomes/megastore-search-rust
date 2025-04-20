@@ -20,6 +20,8 @@ impl Index {
 
         for product in &products {
             let combined = format!("{} {} {}", product.name, product.brand, product.category);
+
+            // ✅ CORREÇÃO ABAIXO
             let lower = combined.to_lowercase();
             let tokens = lower
                 .split_whitespace()
