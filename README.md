@@ -31,3 +31,20 @@ Este sistema foi desenvolvido para simular um mecanismo de busca escalável para
 ├── tests/
 │   └── search_tests.rs  # Testes unitários
 └── Cargo.toml
+
+```
+## ⚙️ Como Rodar
+```bash
+cargo build
+cargo run
+```
+
+🧪 Como Rodar os Testes
+```bash
+cargo test
+```
+
+🔍 Exemplo de Busca
+```rust
+let result = search("smartphone", &index.inverted_index);
+```
